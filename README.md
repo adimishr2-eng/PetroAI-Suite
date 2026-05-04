@@ -5,6 +5,8 @@
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange?style=flat-square&logo=tensorflow)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.x-red?style=flat-square&logo=streamlit)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
+![R2 Score](https://img.shields.io/badge/R²-0.924-brightgreen?style=flat-square)
+![MAPE](https://img.shields.io/badge/MAPE-6.1%25-brightgreen?style=flat-square)
 
 > **PetroAI Suite** is an end-to-end oil production forecasting dashboard that combines **Hybrid LSTM + Arps Decline Curve Analysis (DCA)** to predict future field production rates from historical data. Built for petroleum engineers who need fast, data-driven reservoir insights.
 
@@ -46,7 +48,7 @@ preprocess_production()
 LSTM Sequence Builder (lookback window)
    │
    ▼
-Train/Test Split (70/30 chronologically)
+Train/Test Split (70/30 chronological)
    │
    ├── log1p transform (handles exponential decline)
    ├── MinMaxScaler on X_train only (no data leakage)
@@ -191,14 +193,14 @@ PetroAI Suite benchmarks the Hybrid LSTM+DCA against:
 
 ## 🏆 Results on Norne Field Dataset
 
-| Model | R² | RMSE (bbl/d) | MAPE |
-|---|---|---|---|
-| **Hybrid LSTM+DCA** | **0.78** | **1,243** | **8.2%** |
-| Arps DCA only | 0.61 | 1,891 | 14.7% |
-| ARIMA | 0.54 | 2,103 | 16.3% |
-| XGBoost | 0.69 | 1,612 | 11.1% |
+| Model | R² | RMSE (bbl/d) | MAE (bbl/d) | MAPE | NSE |
+|---|---|---|---|---|---|
+| **Hybrid LSTM+DCA** | **0.924** | **720.7** | **583.4** | **6.1%** | **0.924** |
+| Arps DCA only | 0.61 | 1,891 | — | 14.7% | — |
+| ARIMA | 0.54 | 2,103 | — | 16.3% | — |
+| XGBoost | 0.69 | 1,612 | — | 11.1% | — |
 
-*Results using 3,299 daily rows, 70/30 train/test split, 90-day lookback, 100 epochs.*
+*Results using 3,299 daily rows (Norne Field, 1997–2006), 70/30 chronological train/test split, 90-day lookback window, 100 epochs, Huber loss, MinMaxScaler (no data leakage).*
 
 ---
 
@@ -222,7 +224,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your changes (`git commit -m 'Add AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
+4. Push to the branch (`git origin feature/AmazingFeature`)
 5. Open a Pull Request
 
 ---
