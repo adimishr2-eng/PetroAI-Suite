@@ -231,9 +231,8 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## 👤 Author
 
-**Adarsh**
-B.Tech Petroleum Engineering — Parul University (2022–2026)
-IWCF Level 1 Certified | MWD & Directional Drilling | Production Forecasting
+**Adarsh Mishra**
+B.Tech Petroleum Engineering 
 
 ---
 
